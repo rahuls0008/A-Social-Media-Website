@@ -3,9 +3,24 @@ const express = require('express');
 
 const router = express.Router();
 
-//Router accessing home controller
+
+
+
+
+//Access the users controller
 const homeController = require('../controllers/home_controller');
+
+//Map a route to usersController's profile function
 router.get('/', homeController.home);
+
+//for any further routes, access from here 
+//router.use('/routerName', require('./routerfile'));  
+
+router.use('/users', require('./users'));      //Map it to users route index
+
+
+
+
 
 
 module.exports = router;
