@@ -3,6 +3,12 @@
         <title>
             <%=  title   %>
         </title>
+
+        <!-- link css -->
+        <link rel="stylesheet" href="/css/layout.css">
+
+        <!-- extract style from sub pages into the layout -->
+        <%- style  %>
     </head>
 
     
@@ -17,6 +23,11 @@
 
         <!-- Footer -->
         <%- include('_footer'); %>          <!-- Partials -->
+
+
+
+        <!-- extract scripts from sub pages into the layout -->
+        <%- script  %>
 
     </body>
 </html>
