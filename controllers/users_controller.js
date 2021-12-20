@@ -29,10 +29,31 @@ module.exports.signIn = function(req, res){
 
 //get the sign up data
 module.exports.create = function(req, res){
-    //TODO Later
+    //if password do not matches confirm_password
+    if(req.body.password != req.body.confirm_password){
+        return res.redirect('back');
+    }
+
+    //check if email is unique
+    User.findOne({email: req.body.email}, function(err, user){
+        if(err){   console.log('Error in finding the user while signing up');   }
+
+        //Unique User - create user
+        if(!user){
+            User.create(req.body, function(err, user){
+                if(err){   console.log('Error in creating the user while signing up');   }
+
+                //otherwise, user is created
+                return res.redirect('/users/sign-in');
+            });
+        
+        }else{             //User Already Exists
+            return res.redirect('back');
+        }
+    });
 }
 
 //sign in and create a session for the user
 module.exports.createSession = function(req, res){
-    
+    //TODO Later
 }

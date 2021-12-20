@@ -31,4 +31,4 @@ module.exports = User;
 
 
 //Now, contact schema is created
-// We need to require the schema inside the { index.js } file.
+// We need to require the schema inside the user_controller file.
