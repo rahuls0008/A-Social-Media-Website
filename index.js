@@ -1,11 +1,20 @@
 //Fire up express server   - npm install express
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');   //for layouts : npm install express-ejs-layouts 
 const db = require('./config/mongoose');
-//tell the app to use Layout
+
+
+//tell the app to use it
+app.use(express.urlencoded());
+app.use(cookieParser());
+
+
+//use Layouts
 app.use(expressLayouts);       //LAYOUTS MUST BE CALLED BEFORE ROUTES
+
 
 //use static files
 app.use(express.static('./assets'));
@@ -14,9 +23,11 @@ app.use(express.static('./assets'));
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
-
 //use express router
 app.use('/', require('./routes'));        //home router
+
+
+
 
 //set up the view engine
 app.set('view engine', 'ejs');

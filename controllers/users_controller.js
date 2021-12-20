@@ -1,4 +1,7 @@
 
+//import user schema
+const User = require('../models/user');
+
 //Actions
 
 // render the user > profile page
@@ -31,5 +34,5 @@ module.exports.create = function(req, res){
 
 //sign in and create a session for the user
 module.exports.createSession = function(req, res){
-    //TODO Later
+    
 }
