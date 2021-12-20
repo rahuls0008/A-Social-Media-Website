@@ -1,3 +1,12 @@
-<h1>
-    Sign Up
-</h1>
+
+<h1>  Sign Up   </h1>
+
+<form action="/users/create" method="POST">
+    <input type="text" name="name" placeholder="Enter Your Name" required>
+    <input type="email" name="email" placeholder="abc@xyz.com" required>
+    <input type="password" name="password" placeholder="Create Password" required>
+    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+    <input type="submit" value="Sign Up">
+</form>
+<!-- create an Action for "/users/create" for this route in user_controller -->
