@@ -69,3 +69,10 @@ module.exports.create = function(req, res){
 module.exports.createSession = function(req, res){
     return res.redirect('/');       //to the home page
 }
+
+
+//sign out and destroy session for the user
+module.exports.destroySession = function(req, res){
+    req.logout();  //property of passportJS
+    return res.redirect('/');
+}
