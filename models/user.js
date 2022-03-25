@@ -30,5 +30,5 @@ const User = mongoose.model('User', userSchema);             //Collection name :
 module.exports = User;
 
 
-//Now, contact schema is created
+//Now, user_schema is created
 // We need to require the schema inside the user_controller file.

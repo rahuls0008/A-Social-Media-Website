@@ -6,6 +6,8 @@
 
         <!-- link css -->
         <link rel="stylesheet" href="/css/layout.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/footer.css">
 
         <!-- extract style from sub pages into the layout -->
         <%- style  %>
@@ -17,8 +19,14 @@
         <!-- Header --> 
         <%- include('_header'); %>          <!-- Partials -->
 
-        <!-- Variable Part -->
-        <%- body  %>
+        
+        <main id="layout-main">
+
+            <!-- Variable Part -->
+            <%- body  %>
+
+        </main>
+        
 
 
         <!-- Footer -->

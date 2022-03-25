@@ -13,6 +13,16 @@ const passportLocal = require('./config/passport-local-strategy');
 // setting up Mongo store for session cookies
 // const MongoStore = require('connect-mongo')(session);
 
+//setting up SCSS
+const sassMiddleware = require('node-sass-middleware');
+
+app.use(sassMiddleware({            // Must be set just before Server starts    (files must be pre-compiled before the servers starts)
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,                //shows error if unable to compile into CSS        //Make it False in Production mode
+    outputStyle: 'extendede',
+    prefix: '/css'
+}));
 
 
 //tell the app to use it
