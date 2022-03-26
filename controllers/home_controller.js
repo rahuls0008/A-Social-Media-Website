@@ -32,7 +32,22 @@ module.exports.home = function(req, res){
 
     //find({}) - find all posts from db  > populate the user of each post 
                                         // (because we only had "user : user_id" in db > we populate user to get all other user values(name etc.))
-    Post.find({}).populate('user').exec(function(err, posts){    
+    // Post.find({}).populate('user').exec(function(err, posts){    
+    //     return res.render('home',{
+    //         title : "Codeial | home",
+    //         posts : posts          //pass the posts to home page
+    //     });
+    // });
+
+    Post.find({})
+    .populate('user')          //can refer Documentation
+    .populate({
+        path: 'comments',
+        populate:{    //further Populate
+            path: 'user'          // & we can keep on nesting (this is the way...)
+        }
+    })
+    .exec(function(err, posts){    
         return res.render('home',{
             title : "Codeial | home",
             posts : posts          //pass the posts to home page

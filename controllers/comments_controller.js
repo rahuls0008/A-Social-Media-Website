@@ -4,7 +4,7 @@ const Post = require('../models/post');
 
 
 module.exports.create = function(req, res){
-    // check if post exist      find a post with post id which we directly passed from form
+    // check if Post exist  >  find if post_id(which we directly passed in the the Form) exist in Post DB  
     Post.findById(req.body.post, function(err, post){
         
         // if post exist
@@ -14,6 +14,7 @@ module.exports.create = function(req, res){
                 content : req.body.content,
                 post: req.body.post,
                 user: req.user._id
+            
             },function(err, comment){
                 //handle Error
 
