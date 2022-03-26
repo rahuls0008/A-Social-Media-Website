@@ -19,5 +19,20 @@
         <input type="submit" value="Post">
     </form>
 
+    <!-- display Posts & related user -->
+    <div id = "posts-list-container">
+        <ul>
+            <%  for(post of posts){ %> 
+                    <p>
+                        <li>     
+                            <%= post.content %>      <br>
+                            <small>   <%= post.user.name   %> </small>
+                        </li>
+                    </p>
+                                       
+            <%  } %> 
+        </ul>       
+    </div>
+
 </section>
 
