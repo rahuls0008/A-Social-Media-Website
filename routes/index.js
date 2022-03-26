@@ -17,8 +17,7 @@ router.get('/', homeController.home);
 //router.use('/routerName', require('./routerfile'));  
 
 router.use('/users', require('./users'));      //Map it to users route index
-
-
+router.use('/posts', require('./posts'));         //Map it to posts route index
 
 
 
