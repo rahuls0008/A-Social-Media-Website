@@ -12,31 +12,50 @@
 
 <section id="feed-posts">
     <h4> Posts </h4>
-
+    
     <!-- create Post form -->
-     <%  if(locals.user){ %>        <!-- display form only if user is Signed-In -->
-            
-            <form action="/posts/create" id="new-post-form" method="POST">
-                <textarea name="content" cols="30" rows="3" placeholder="What are you up to...."> </textarea>
-                <input type="submit" value="Post">
-            </form>
+    <%  if(locals.user){ %>        <!-- display form only if user is Signed-In -->
+        
+        <form action="/posts/create" id="new-post-form" method="POST">
+            <textarea name="content" cols="30" rows="3" placeholder="What are you up to...."> </textarea>
+            <input type="submit" value="Post">
+        </form>
     <% } %> 
-
-
+        
+        
     <!-- display Posts & related user -->
     <div id = "posts-list-container">
         <ul>
-            <%  for(post of posts){ %> 
-                    <p>
-                        <li>     
-                            <%= post.content %>      <br>
-                            <small>   <%= post.user.name   %> </small>
-                        </li>
+            <% for(post of posts){ %> 
+
+                <li>
+                    <!-- Post -->
+                    <p>    
+                        <%= post.content %>      <br>
+                        <small>   <%= post.user.name   %> </small>
                     </p>
-                                       
-            <%  } %> 
+                        
+                    <!-- Comment -->
+                    <div class="post-comments">
+                            
+                        <% if(locals.user){     %>         <!-- display comment form  only to Signed-In user -->
+                                    
+                                <form action="/comments/create" method="POST">
+                                    <input type="text" name="content" placeholder="Type here to add comment...">
+                                    
+                                    <!-- DIRECTLY pass the ID of Post to which comment needs to be added -->
+                                    <input type="hidden" name="post" value="<%= post._id %>"  >      <!--  so that we can check if this post_id matches with any of post_id in the db  -->   
+                                                <!-- hidden -->                                                 <!--  see comments_controller  -->
+                                    
+                                    <input type="submit"  value="Add Comment"  >
+                                </form>
+                        <% } %>         
+                    </div>
+                </li>
+                <% } %> 
         </ul>       
     </div>
-
+                
 </section>
-
+            
+            
