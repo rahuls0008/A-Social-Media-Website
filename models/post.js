@@ -9,10 +9,16 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    user: {                 // ************ Link the post  to User ********
+    user: {                 // ************ Link the post to a User ********
         type: mongoose.Schema.Types.ObjectID,
-        ref: 'User'     // refer to User Schema
-    }
+        ref: 'User'     // refer to User collection
+    },   
+    comments:  [      // include the [ARRAY of IDs of all COMMENTS] in this Post schema itself
+        {
+            type: mongoose.Schema.Types.ObjectID,
+            ref: 'Comment'     // refer to User collection
+        }
+    ]
 }, {
         timestamps: true
 });
